@@ -60,13 +60,13 @@
         "*.asset": "yaml",
         "*.meta": "yaml",
         "*.prefab": "yaml",
-        "*.unity": "yaml",
+        "*.unity": "yaml"
     },
     "explorer.fileNesting.enabled": true,
     "explorer.fileNesting.patterns": {
         "*.sln": "*.csproj",
         "*.slnx": "*.csproj"
     },
-    "dotnet.defaultSolution": "26T3_GAD176_Joma_Charles.slnx",
+    "dotnet.defaultSolution": "26T3_GAD176.1_Joma_Charles.slnx",
     "dotnet.enableWorkspaceBasedDevelopment": false
 }
