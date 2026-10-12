@@ -1,6 +1,7 @@
+using SAE.GAD170.P1.CBC;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : CharacterBaseClass
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
