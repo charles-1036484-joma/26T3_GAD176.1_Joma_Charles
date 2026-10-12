@@ -6,26 +6,34 @@ using UnityEngine.Events;
 public class Karma : MonoBehaviour
 {
     // Enum = user defined data type. consist of named constant values || const Bad etc.
-    public enum KarmaStatus // Had to make this public so subscribe can access
+    // AKA Predefined values
+    public enum KarmaStatus 
     {
         Bad,
         Neutral,
         Good,
     }
 
-    [SerializeField] // This event will pass two pieces of data to whoever is listening, an int and a karma.karmastatus
-    private UnityEvent<int, KarmaStatus> onKarmaChanged = new UnityEvent<int, KarmaStatus>();
+    #region OnKarmaChanged
+    [SerializeField] // This event will pass two pieces of data to whoever is listening, an int and a KarmaStatus
+    protected UnityEvent<int, KarmaStatus> onKarmaChanged = new UnityEvent<int, KarmaStatus>(); // I made this protected, in future when i expand this system I may need another class inheriting from Karma
+    #endregion
 
     #region Karma Range. Min. Max
     [Header("Karma Range")] // group these fields under this heading
-    [SerializeField] 
-    private int minValue = 0;
+    [SerializeField]
+    private int minKarmaValue = 0;
 
     [SerializeField]
-    private int maxValue = 100;
+    private int maxKarmaValue = 100;
 
     [SerializeField]
-    private int currentValue = 50;
+    private int currentKarmaValue = 50;
+
+    // The are Read only variables so other scripts can look at values but not change it.
+    public int publicCurrentKarmaValue => currentKarmaValue;
+    public int publicMinKarmaValue => minKarmaValue;
+    public int publicMaxKarmaValue => maxKarmaValue;
     #endregion
 
     #region Karma Status
@@ -38,19 +46,58 @@ public class Karma : MonoBehaviour
 
     #endregion
 
-    #region Subscription Events
+    #region Functions to allow changing of Karma externally
+
+    // This is the only way to change Karma, positive numbers add and negative subtract 
+    // This is then used to determine, bad, neutral or good
+    public void AddKarma(int amount)
+    {
+        currentKarmaValue = currentKarmaValue += amount;
+        Debug.Log("Karma has changed by: " + amount + ". You are a ");
+
+        // Since this changes Karma so we need to call it/invoke it
+        onKarmaChanged?.Invoke(currentKarmaValue, CurrentStatus);
+    }
+
+    // This is a read-only property, when you use this 'CurrentStatus' it will get and return the result of the if value
+    // I only want this script to be able to influence currentStatus 
+    public KarmaStatus CurrentStatus
+    {
+        get
+        {
+            if (currentKarmaValue <= badThreshold)
+            {
+                Debug.Log("Your Character is Bad");
+                return KarmaStatus.Bad;
+            }
+            if (currentKarmaValue >= goodThreshold)
+            {
+                Debug.Log("Your Character is Good");
+                return KarmaStatus.Good;
+            }
+            Debug.Log("Your Character is Neutral");
+            return KarmaStatus.Neutral;
+        }
+    }
+
+    #endregion
+
+    #region Event Listener functions
     public void Subscribe(UnityAction<int, KarmaStatus> listener)
     {
         onKarmaChanged.AddListener(listener);
+        Debug.Log("Karma Status Changed: Listener Add");
     }
 
-    public void Unsubcribe(UnityAction<int, KarmaStatus> listener)
+    public void Unsubscribe(UnityAction<int, KarmaStatus> listener)
     {
         onKarmaChanged.RemoveListener(listener);
+        Debug.Log("Karma Status Changed: Removed Add");
     }
-    
+
     #endregion
-    #region UNITY SPECIFIC FUNCTIONS
+
+    #region Unity Start & Update
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start() { }
 

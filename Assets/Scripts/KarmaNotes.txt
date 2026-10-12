@@ -1,10 +1,21 @@
 
 
-Week 11 slide 150
+Week 11 Trimester 1: slide 150
 Enums: https://moodle-sae-au.axis.navitas.com/course/view.php?id=6287&section=13#tabs-tree-start
 
 Bugs: Missing ";" line 2
 Bugs: Was Missing "();" line 17 
 
+Week 3 Encapsulation 
+Encapsulation: https://moodle-sae-au.axis.navitas.com/course/view.php?id=6447&section=5#tabs-tree-start
 
 Event Parameters: https://docs.unity3d.com/6000.5/Documentation/ScriptReference/Events.UnityEvent_1.html
+
+
+
+Decisions
+I decided to just use numbers between 0 and 100 and add or remove from the same value
+This simplifies it for me, Initially i thought i would have two gauges and you could add both.
+
+
+Week 11 Trimester 2: Getter and Setters
