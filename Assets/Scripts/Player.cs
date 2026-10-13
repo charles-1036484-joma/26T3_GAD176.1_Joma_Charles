@@ -3,10 +3,10 @@ using UnityEngine;
 
 public class Player : CharacterBaseClass
 {
-    [SerializeField]private Karma playerKarma;
 
+    private Karma playerKarma;
 
-    #region Unity Specific Functions
+   
     void Start()
     {
         playerKarma = GetComponent<Karma>();
@@ -15,7 +15,15 @@ public class Player : CharacterBaseClass
     // Update is called once per frame
     void Update()
     {
-        
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            if (playerKarma.onKarmaChanged != null) // Null Check
+                {
+                    playerKarma.onKarmaChanged.Invoke(10, playerKarma.CurrentStatus);
+                    Debug.Log(playerKarma.CurrentStatus);
+                }
+        }
+        Debug.Log(playerKarma.publicCurrentKarmaValue);
     }
-    #endregion
+
 }

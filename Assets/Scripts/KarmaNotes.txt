@@ -18,4 +18,11 @@ I decided to just use numbers between 0 and 100 and add or remove from the same 
 This simplifies it for me, Initially i thought i would have two gauges and you could add both.
 
 
+
 Week 11 Trimester 2: Getter and Setters
+
+
+### Learnings
+
+If i want my player to access the the Karma event listener I have to have it public to access it from my player script,
+Previously i had it protected and could not access it. 

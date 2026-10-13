@@ -14,9 +14,9 @@ public class Karma : MonoBehaviour
         Good,
     }
 
-    #region OnKarmaChanged
+    #region OnKarmaChanged Event
     [SerializeField] // This event will pass two pieces of data to whoever is listening, an int and a KarmaStatus
-    protected UnityEvent<int, KarmaStatus> onKarmaChanged = new UnityEvent<int, KarmaStatus>(); // I made this protected, in future when i expand this system I may need another class inheriting from Karma
+    public UnityEvent<int, KarmaStatus> onKarmaChanged = new UnityEvent<int, KarmaStatus>(); // I made this protected, in future when i expand this system I may need another class inheriting from Karma
     #endregion
 
     #region Karma Range. Min. Max
@@ -53,10 +53,20 @@ public class Karma : MonoBehaviour
     public void AddKarma(int amount)
     {
         currentKarmaValue = currentKarmaValue += amount;
-        Debug.Log("Karma has changed by: " + amount + ". You are a ");
-
+        Debug.Log("Karma has changed by: " + amount );
         // Since this changes Karma so we need to call it/invoke it
         onKarmaChanged?.Invoke(currentKarmaValue, CurrentStatus);
+        Debug.Log("You are Character is: " + CurrentStatus);
+
+    }
+
+    public void LoseKarma(int amount)
+    {
+        currentKarmaValue = currentKarmaValue -= amount;
+        Debug.Log("Karma has changed by: " + amount );
+        // Since this changes Karma so we need to call it/invoke it
+        onKarmaChanged?.Invoke(currentKarmaValue, CurrentStatus);
+        Debug.Log("You are Character is: " + CurrentStatus);
     }
 
     // This is a read-only property, when you use this 'CurrentStatus' it will get and return the result of the if value
