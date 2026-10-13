@@ -3,10 +3,13 @@ using UnityEngine;
 
 public class Player : CharacterBaseClass
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    [SerializeField]private Karma playerKarma;
+
+
+    #region Unity Specific Functions
     void Start()
     {
-        
+        playerKarma = GetComponent<Karma>();
     }
 
     // Update is called once per frame
@@ -14,4 +17,5 @@ public class Player : CharacterBaseClass
     {
         
     }
+    #endregion
 }
