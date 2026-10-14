@@ -3,10 +3,11 @@ using UnityEngine;
 
 public class Player : CharacterBaseClass
 {
-
     private Karma playerKarma;
 
-   
+    [SerializeField]
+    private Karma.KarmaStatus CurrentStatus; 
+
     void Start()
     {
         playerKarma = GetComponent<Karma>();
@@ -15,15 +16,19 @@ public class Player : CharacterBaseClass
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            if (playerKarma.onKarmaChanged != null) // Null Check
-                {
-                    playerKarma.onKarmaChanged.Invoke(10, playerKarma.CurrentStatus);
-                    Debug.Log(playerKarma.CurrentStatus);
-                }
-        }
-        Debug.Log(playerKarma.publicCurrentKarmaValue);
+        // if player touches red cube
+        // null check onKarmaChanged
+        // invoke RemoveKarma
+
+        /*
+            if player touches gold cube
+                null check onKarmaChanged
+                invoke AddKarma
+        */
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        
+    }
 }

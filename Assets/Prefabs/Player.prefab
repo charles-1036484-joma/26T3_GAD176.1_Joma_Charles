@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 5107429297037412235}
   - component: {fileID: 3782625259573750775}
   - component: {fileID: -5600923798911969657}
+  - component: {fileID: 7779840787187620766}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -323,6 +324,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9bc6896e28f5740cb8b9a7cf1a0bc0ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minValue: 0
-  maxValue: 100
-  currentValue: 50
+  minKarmaValue: 0
+  maxKarmaValue: 100
+  currentKarmaValue: 50
+  badThreshold: 30
+  goodThreshold: 70
+  onKarmaChanged:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &7779840787187620766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8856502025641103335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e2bd9a97f5c645abb3b93450bc9136d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 100
+  health: 100
+  playerStatus: 1
