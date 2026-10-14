@@ -10,7 +10,7 @@ public class Player : CharacterBaseClass
 
     void Start()
     {
-        playerKarma = GetComponent<Karma>();
+        playerKarma = GetComponent<Karma>(); // Get the Karma "Component" that is attached to the object this Script is attached to
     }
 
     // Update is called once per frame
