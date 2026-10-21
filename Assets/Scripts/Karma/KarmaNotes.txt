@@ -11,18 +11,24 @@ Encapsulation: https://moodle-sae-au.axis.navitas.com/course/view.php?id=6447&se
 
 Event Parameters: https://docs.unity3d.com/6000.5/Documentation/ScriptReference/Events.UnityEvent_1.html
 
-
-
 Decisions
 I decided to just use numbers between 0 and 100 and add or remove from the same value
 This simplifies it for me, Initially i thought i would have two gauges and you could add both.
 
 
-
-Week 11 Trimester 2: Getter and Setters
+Week 11 Trimester 2: 
+Getter and Setters: https://moodle-sae-au.axis.navitas.com/course/view.php?id=6287&section=13
 
 
 ### Learnings
 
 If i want my player to access the the Karma event listener I have to have it public to access it from my player script,
 Previously i had it protected and could not access it. 
+
+## Interfaces
+Use an interface with type Karma or turn karma into an interface and good+bad karma can have that interface type 
+
+// This did not work, it added the current karma value to the value of the slide do 50 + 10, then 60 + 60 etc. so i updated it.
+GoodSlider.value += playerKarma.publicCurrentGoodKarmaValue; ->  GoodSlider.value = playerKarma.publicCurrentGoodKarmaValue;
+
+
