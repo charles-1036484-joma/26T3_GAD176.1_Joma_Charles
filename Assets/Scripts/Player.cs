@@ -6,20 +6,11 @@ namespace SAE.GAD170.See.P1.Player
 {
     public class Player : CharacterBaseClass
     {
-        [SerializeField]
         private Karma playerKarma;
 
-        [SerializeField]
-        public Level playerLevel
-        {
-            get { return playerLevel; }
-        }
+        public Level playerLevel;
 
-        [SerializeField]
-        private Health playerHealth;
-
-        [SerializeField]
-        private int playerSpeed;
+        public Movement playerSpeed;
 
         [SerializeField]
         private int playerFearFactor;
@@ -27,18 +18,27 @@ namespace SAE.GAD170.See.P1.Player
         [SerializeField]
         private int playerJumpHeight;
 
+        [SerializeField]
+        private StatsManager statsManager;
+
         protected Karma.KarmaStatus type;
 
-        public StatsManager GoodSlider;
-        public StatsManager BadSlider;
+        // [SerializeField]
+        // private Slider GoodSlider;
+
+        // [SerializeField]
+        // private Slider BadSlider;
 
         #region Unity specific functions
-        void Start()
+        void Awake()
         {
             playerKarma = GetComponent<Karma>(); // Get the Karma "Component" that is attached to the object this Script is attached to
-            // playerLevel = GetComponent<Level>();
-            playerHealth = GetComponent<Health>();
+            playerLevel = GetComponent<Level>();
+            playerSpeed = GetComponent<Movement>();
+            // statsManager = GetComponent<StatsManager>();
         }
+
+        void Start() { }
 
         // Update is called once per frame
         void Update()
@@ -58,26 +58,15 @@ namespace SAE.GAD170.See.P1.Player
         {
             if (collision.gameObject.tag == "GoodAct")
             {
-                // Add good karma to player
-                playerKarma.AddGoodKarma(10);
-                // Adjust the good karma slider, add the value to the slider
-                GoodSlider.GoodKarmaBar.value = playerKarma.publicCurrentGoodKarmaValue;
-                // this just uses the get as the callback function, but i want to make the function it invokes more useful rather than just a get.
-                playerKarma.onKarmaChanged.Invoke(
-                    playerKarma.publicCurrentGoodKarmaValue,
-                    playerKarma.CurrentStatus
-                );
-                Destroy(collision.gameObject);
+                statsManager.UpdateGoodAct(collision);
             }
             if (collision.gameObject.tag == "BadAct")
             {
-                playerKarma.AddBadKarma(10);
-                BadSlider.BadKarmaBar.value = playerKarma.publicCurrentBadKarmaValue;
-                playerKarma.onKarmaChanged.Invoke(
-                    playerKarma.publicCurrentGoodKarmaValue,
-                    playerKarma.CurrentStatus
-                );
-                Destroy(collision.gameObject);
+                statsManager.UpdateBadAct(collision);
+            }
+            if (collision.gameObject.tag == "BigBadAct")
+            {
+                statsManager.UpdateBigBadAct(collision);
             }
 
             if (collision.gameObject.tag == "Neutral")

@@ -15,50 +15,87 @@ public class StatsManager : MonoBehaviour
     public Slider BadKarmaBar;
 
     [SerializeField]
+    private Player player;
+
+    [SerializeField]
+    private int playerLevel;
+
+    [SerializeField]
     private Karma playerKarma;
 
     [SerializeField]
-    private Player playerLevel;
+    private float playerSpeed;
+
+    [SerializeField]
+    private Slider GoodSlider;
+
+    [SerializeField]
+    private Slider BadSlider;
 
     public TextMeshProUGUI playerLevelUiText;
     public TextMeshProUGUI GoodKarmaUiText;
     public TextMeshProUGUI BadKarmaUiText;
-
-    private void SetHealth(int health)
-    {
-        HealthBar.value = health;
-    }
-
-    private void SetGoodKarma(int amount)
-    {
-        GoodKarmaBar.value = playerKarma.publicCurrentGoodKarmaValue;
-    }
-
-    private void SetBadKarma(int amount)
-    {
-        GoodKarmaBar.value = playerKarma.publicCurrentBadKarmaValue;
-    }
 
     private void DisplayKarmaStats()
     {
         Debug.Log(playerKarma.CurrentStatus);
     }
 
+    #region Karma Functions
+    public void UpdateGoodAct(Collision collision)
+    {
+        // Add good karma to player
+        playerKarma.AddGoodKarma(10);
+        // Adjust the good karma slider, add the value to the slider
+        GoodSlider.value = playerKarma.publicCurrentGoodKarmaValue;
+        // this just uses the get as the callback function, but i want to make the function it invokes more useful rather than just a get.
+        playerKarma.onKarmaChanged.Invoke(
+            playerKarma.publicCurrentGoodKarmaValue,
+            playerKarma.CurrentStatus
+        );
+        Destroy(collision.gameObject);
+    }
+
+    public void UpdateBadAct(Collision collision)
+    {
+        playerKarma.AddBadKarma(10);
+        Debug.Log(BadSlider.value);
+        BadSlider.value = playerKarma.publicCurrentBadKarmaValue;
+        playerKarma.onKarmaChanged.Invoke(
+            playerKarma.publicCurrentGoodKarmaValue,
+            playerKarma.CurrentStatus
+        );
+        Destroy(collision.gameObject);
+    }
+
+    public void UpdateBigBadAct(Collision collision)
+    {
+        playerKarma.AddBadKarma(30);
+        Debug.Log(BadSlider.value);
+        BadSlider.value = playerKarma.publicCurrentBadKarmaValue;
+        playerKarma.onKarmaChanged.Invoke(
+            playerKarma.publicCurrentGoodKarmaValue,
+            playerKarma.CurrentStatus
+        );
+        Destroy(collision.gameObject);
+    }
+    #endregion
+
     #region Unity Specific functions
+    void Awake()
+    {
+        playerLevel = player.playerLevel.PublicCurrentPlayerLevel;
+        playerSpeed = player.playerSpeed.walkSpeed;
+    }
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        DisplayKarmaStats();
-        SetHealth(100);
-        SetBadKarma(0);
-        SetGoodKarma(0);
-        Debug.Log(playerLevel.playerLevel);
+        // DisplayKarmaStats();
+        playerLevelUiText.text = $"Level: {playerLevel.ToString()}";
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        if (playerKarma.onKarmaChanged != null) { }
-    }
+    void Update() { }
     #endregion
 }

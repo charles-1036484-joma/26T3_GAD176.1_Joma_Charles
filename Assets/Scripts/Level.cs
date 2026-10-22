@@ -6,6 +6,10 @@ public class Level : MonoBehaviour
     [SerializeField]
     private int currentLevel = 1;
 
+    [SerializeField]
+    private int MaxLevel = 10;
+
+
     public int PublicCurrentPlayerLevel
     {
         get { return currentLevel; }

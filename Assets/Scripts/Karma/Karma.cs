@@ -28,12 +28,6 @@ public class Karma : MonoBehaviour
     [SerializeField]
     private int currentBadKarmaValue = 0;
 
-    [SerializeField]
-    private Slider GoodKarmaBar;
-
-    [SerializeField]
-    private Slider BadKarmaBar;
-
     #region Karma Status
     [Header("Karma Status Thresholds")]
     [SerializeField] // If player is at or below this number they are bad
@@ -123,6 +117,17 @@ public class Karma : MonoBehaviour
     {
         get { return currentGoodKarmaValue; }
     } // the => is shorthand return get method
+
+    // public int CheckKarmaValueAndAddStats
+    // {
+    //     get { 
+    //         if(currentGoodKarmaValue > goodThreshold)
+    //         {
+                
+    //         }
+
+    //      }
+    // } // the => is shorthand return get method
     public int publicCurrentBadKarmaValue
     {
         get { return currentBadKarmaValue; }
