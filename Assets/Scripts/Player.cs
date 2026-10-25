@@ -32,6 +32,7 @@ namespace SAE.GAD170.See.P1.Player
         #region Unity specific functions
         void Awake()
         {
+            // I do not need these here.
             playerKarma = GetComponent<Karma>(); // Get the Karma "Component" that is attached to the object this Script is attached to
             playerLevel = GetComponent<Level>();
             playerSpeed = GetComponent<Movement>();

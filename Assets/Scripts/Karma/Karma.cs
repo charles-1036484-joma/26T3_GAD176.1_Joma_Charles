@@ -19,9 +19,6 @@ public class Karma : MonoBehaviour
     [SerializeField]
     private int minKarmaValue = 0;
 
-    // [SerializeField]
-    // private int maxKarmaValue = 100;
-
     [SerializeField]
     private int currentGoodKarmaValue = 0;
 
@@ -127,7 +124,7 @@ public class Karma : MonoBehaviour
     //         }
 
     //      }
-    // } // the => is shorthand return get method
+    // } // 
     public int publicCurrentBadKarmaValue
     {
         get { return currentBadKarmaValue; }
