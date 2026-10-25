@@ -42,7 +42,7 @@ public class Movement : MonoBehaviour
 
     [Header("Walking")]
     [Tooltip("Maximum walking speed.")]
-    public float walkSpeed = 4f;
+    public float walkSpeed = 10f;
 
     [Tooltip("How quickly the player reaches walking speed while grounded.")]
     [SerializeField]

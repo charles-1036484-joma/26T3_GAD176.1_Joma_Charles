@@ -153,6 +153,8 @@ GameObject:
   - component: {fileID: 3782625259573750775}
   - component: {fileID: -5600923798911969657}
   - component: {fileID: 7779840787187620766}
+  - component: {fileID: -2221007143885427362}
+  - component: {fileID: -2079349815447114256}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -325,8 +327,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   minKarmaValue: 0
-  maxKarmaValue: 100
-  currentKarmaValue: 50
+  currentGoodKarmaValue: 0
+  currentBadKarmaValue: 0
   badThreshold: 30
   goodThreshold: 70
   onKarmaChanged:
@@ -346,4 +348,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   health: 100
-  playerStatus: 1
+  playerHealth: {fileID: 0}
+  playerSpeed: 0
+  playerFearFactor: 0
+  playerJumpHeight: 0
+  GoodSlider: {fileID: 0}
+  BadSlider: {fileID: 0}
+--- !u!114 &-2221007143885427362
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8856502025641103335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c318c693608414ce689dbf28077efb4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentLevel: 1
+--- !u!114 &-2079349815447114256
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8856502025641103335}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee7c24edd420f43e5a087fb7e944a611, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

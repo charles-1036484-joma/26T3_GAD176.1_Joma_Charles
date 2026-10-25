@@ -1,0 +1,14 @@
+List of Strings 
+https://discussions.unity.com/t/string-array-in-c/407413
+
+How to add additional Data to a game object?
+https://discussions.unity.com/t/how-to-add-additional-data-to-a-game-object/562203
+
+https://stackoverflow.com/questions/22335103/c-sharp-how-to-use-get-set-and-use-enums-in-a-class
+
+C# How to use get, set and use enums in a class
+https://stackoverflow.com/questions/22335103/c-sharp-how-to-use-get-set-and-use-enums-in-a-class
+
+
+C# | Method returning an object
+https://www.geeksforgeeks.org/c-sharp/c-sharp-method-returning-an-object/
